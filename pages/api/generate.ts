@@ -1,6 +1,4 @@
-import { Ratelimit } from "@upstash/ratelimit";
 import type { NextApiRequest, NextApiResponse } from "next";
-import redis from "../../utils/redis";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "./auth/[...nextauth]";
 
@@ -17,15 +15,6 @@ interface ExtendedNextApiRequest extends NextApiRequest {
     room: string;
   };
 }
-
-// Create a new ratelimiter, that allows 3 requests per 24 hours
-const ratelimit = redis
-  ? new Ratelimit({
-      redis: redis,
-      limiter: Ratelimit.fixedWindow(3, "1440 m"),
-      analytics: true,
-    })
-  : undefined;
 
 export default async function handler(
   req: ExtendedNextApiRequest,
@@ -76,18 +65,6 @@ export default async function handler(
       "X-User": session.user.email,
       Authorization: "Bearer " + process.env.METERON_API_KEY,
     },
-    body: JSON.stringify({
-      version:
-        "854e8727697a057c525cdb45ab037f64ecca770a1769cc52287c2e56472a247b",
-      input: {
-        image: imageUrl,
-        prompt: prompt,
-        a_prompt:
-          "best quality, extremely detailed, photo from Pinterest, interior, cinematic photo, ultra-detailed, ultra-realistic, award-winning",
-        n_prompt:
-          "longbody, lowres, bad anatomy, bad hands, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality",
-      },
-    }),
   });
 
   let jsonStartResponse = await startResponse.json();
