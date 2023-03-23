@@ -6,21 +6,21 @@ export default function Footer() {
       <div className="text-gray-500">
         Powered by{" "}
         <a
+          href="https://meteron.ai"
+          target="_blank"
+          rel="noreferrer"
+          className="font-bold hover:underline hover:text-gray-300 transition underline-offset-2"
+        >
+          Meteron,{" "}
+        </a>
+        <a
           href="https://replicate.com/"
           target="_blank"
           rel="noreferrer"
           className="font-bold hover:underline transition hover:text-gray-300 underline-offset-2"
         >
-          Replicate,{" "}
-        </a>
-        <a
-          href="https://upload.io"
-          target="_blank"
-          rel="noreferrer"
-          className="font-bold hover:underline hover:text-gray-300 transition underline-offset-2"
-        >
-          Upload,{" "}
-        </a>
+          Replicate{" "}
+        </a>        
         and{" "}
         <a
           href="https://vercel.com/"

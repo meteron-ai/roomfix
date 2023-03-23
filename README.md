@@ -50,7 +50,10 @@ npm run dev
 4. Click configure consent screen in API credentials page and click external
 5. Add an app name, do not upload logo, add authorized domain
 6. Publish app
-7. Create credentials -> Oauth client ID
+7. Create credentials -> Oauth client ID (web application). The "Authorized redirect URIs" used when creating the credentials must include your full domain and end in the callback path. For example:
+  - For production: https://{YOUR_DOMAIN}/api/auth/callback/google
+  - For development: http://localhost:3000/api/auth/callback/google
+
 8. Run npx prisma db push && prisma migrate dev && prisma generate
 
 ## One-Click Deploy

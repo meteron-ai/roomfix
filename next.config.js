@@ -2,13 +2,13 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ["upcdn.io", "replicate.delivery", "lh3.googleusercontent.com"],
+    domains: ["upcdn.io", "replicate.delivery", "lh3.googleusercontent.com", "2100bb7379b3adaba6ea0954af4263ce.r2.cloudflarestorage.com"],
   },
   async redirects() {
     return [
       {
         source: "/github",
-        destination: "https://github.com/Nutlope/roomGPT",
+        destination: "https://github.com/meteron-ai/react-roomgpt",
         permanent: false,
       },
       {

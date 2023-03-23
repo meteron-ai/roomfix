@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Footer from "../components/Footer";
-import prisma from "../lib/prismadb";
+// import prisma from "../lib/prismadb";
 import { Room } from "@prisma/client";
 import { RoomGeneration } from "../components/RoomGenerator";
 import { getServerSession } from "next-auth";
@@ -24,7 +24,7 @@ export default function Dashboard({ rooms }: { rooms: Room[] }) {
         {rooms ? (
           <p className="text-gray-300">
             Browse through your previous room generations below. Any feedback?
-            Email hassan@hey.com
+            Email hey@meteron.ai
           </p>
         ) : (
           <p className="text-gray-300">
@@ -37,10 +37,10 @@ export default function Dashboard({ rooms }: { rooms: Room[] }) {
             </Link>
           </p>
         )}
-        {rooms.map((room) => (
+        {rooms.map((room) => (         
           <RoomGeneration
-            original={room.inputImage}
-            generated={room.outputImage}
+            originalBase64={room.requestBody}
+            generated={room.outputImages[1].url}
           />
         ))}
       </main>
@@ -55,17 +55,32 @@ export async function getServerSideProps(ctx: any) {
     return { props: { rooms: [] } };
   }
 
-  let rooms = await prisma.room.findMany({
-    where: {
-      user: {
-        email: session.user.email,
-      },
-    },
-    select: {
-      inputImage: true,
-      outputImage: true,
+  let roomsResponse = await fetch("https://app.meteron.ai/api/images/generations?" + new URLSearchParams({
+        user: session.user.email,
+        cluster: "replicate",
+    }), {
+    method: "GET",   
+    headers: {
+      "Content-Type": "application/json",
+      // "X-Cluster": "replicate",
+      Authorization: "Bearer " + process.env.METERON_API_KEY,
     },
   });
+
+  let jsonRoomsResponse = await roomsResponse.json();
+
+  let rooms = jsonRoomsResponse.results;
+  // let rooms = await prisma.room.findMany({
+  //   where: {
+  //     user: {
+  //       email: session.user.email,
+  //     },
+  //   },
+  //   select: {
+  //     inputImage: true,
+  //     outputImage: true,
+  //   },
+  // });
 
   return {
     props: {
