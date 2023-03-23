@@ -15,14 +15,14 @@ export default async function handler(
   }
 
   // Query the database by email to get the number of generations left
-  const user = await prisma.user.findUnique({
-    where: {
-      email: session.user.email!,
-    },
-    select: {
-      credits: true,
-    },
-  });
+  // const user = await prisma.user.findUnique({
+  //   where: {
+  //     email: session.user.email!,
+  //   },
+  //   select: {
+  //     credits: true,
+  //   },
+  // });
 
-  return res.status(200).json({ remainingGenerations: user?.credits });
+  return res.status(200).json({ remainingGenerations: 50 });
 }

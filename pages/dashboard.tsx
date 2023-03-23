@@ -71,17 +71,6 @@ export async function getServerSideProps(ctx: any) {
   let jsonRoomsResponse = await roomsResponse.json();
 
   let rooms = jsonRoomsResponse.results;
-  // let rooms = await prisma.room.findMany({
-  //   where: {
-  //     user: {
-  //       email: session.user.email,
-  //     },
-  //   },
-  //   select: {
-  //     inputImage: true,
-  //     outputImage: true,
-  //   },
-  // });
 
   return {
     props: {

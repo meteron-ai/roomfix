@@ -26,10 +26,18 @@ export default async function handler(
     return res.status(500).json("Login to upload.");
   }
 
-  // Rate Limiter Code
+  const ratelimit = false
+
+  // TODO: ability from meteron to get the rate
+  // limit for a user
   if (ratelimit) {
-    const identifier = session.user.email;
-    const result = await ratelimit.limit(identifier!);
+    // const identifier = session.user.email;
+    const result = {
+      limit: 100,
+      remaining: 50,
+      reset: new Date(),
+      success: true 
+    }
     res.setHeader("X-RateLimit-Limit", result.limit);
     res.setHeader("X-RateLimit-Remaining", result.remaining);
 
@@ -65,6 +73,19 @@ export default async function handler(
       "X-User": session.user.email,
       Authorization: "Bearer " + process.env.METERON_API_KEY,
     },
+    body: JSON.stringify({
+      version:
+        "854e8727697a057c525cdb45ab037f64ecca770a1769cc52287c2e56472a247b",
+      input: {
+        image: imageUrl,
+        prompt: prompt,
+        scale: 9,
+        a_prompt:
+          "best quality, photo from Pinterest, interior, cinematic photo, ultra-detailed, ultra-realistic, award-winning, interior design",
+        n_prompt:
+          "longbody, lowres, bad anatomy, bad hands, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality",
+      },
+    }),
   });
 
   let jsonStartResponse = await startResponse.json();
