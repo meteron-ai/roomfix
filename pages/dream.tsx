@@ -126,7 +126,7 @@ const Home: NextPage = () => {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>RoomGPT</title>
+        <title>RoomFix</title>
       </Head>
       <Header photo={session?.user?.image || undefined} />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4 sm:mb-0 mb-8">
@@ -136,7 +136,7 @@ const Home: NextPage = () => {
             className="border border-gray-700 rounded-2xl py-2 px-4 text-gray-400 text-sm my-6 duration-300 ease-in-out hover:text-gray-300 transition"
           >
             Use coupon{" "}
-            <span className="font-semibold text-gray-200">ROOMGPT50</span> for
+            <span className="font-semibold text-gray-200">ROOMFIX50</span> for
             50% off credits - only for this week!
           </Link>
         ) : (
@@ -146,9 +146,9 @@ const Home: NextPage = () => {
             rel="noopener noreferrer"
             className="border border-gray-700 rounded-2xl py-2 px-4 text-gray-400 text-sm my-6 duration-300 ease-in-out hover:text-gray-300 transition"
           >
-            Over{" "}
-            <span className="font-semibold text-gray-200">1 million users</span>{" "}
-            have used roomGPT so far
+            Learn how to{" "}
+            <span className="font-semibold text-gray-200">run roomfix.ai yourself</span>{" "}
+            !
           </a>
         )}
         <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
