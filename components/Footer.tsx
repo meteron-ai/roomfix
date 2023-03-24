@@ -45,7 +45,7 @@ export default function Footer() {
           </svg>
         </Link>
         <Link
-          href="https://github.com/meteron-ai/react-roomgpt"
+          href="https://github.com/meteron-ai/roomfix"
           className="group"
           aria-label="TaxPal on GitHub"
         >

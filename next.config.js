@@ -15,7 +15,7 @@ module.exports = {
     return [
       {
         source: "/github",
-        destination: "https://github.com/meteron-ai/react-roomgpt",
+        destination: "https://github.com/meteron-ai/roomfix",
         permanent: false,
       },
       {
