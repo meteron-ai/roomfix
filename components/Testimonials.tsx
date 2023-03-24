@@ -74,7 +74,7 @@ export function Testimonials() {
       id="testimonials"
       aria-label="What our customers are saying"
       className="py-10"
-    >
+    > 
       <div className="mx-auto px-4 sm:px-6 lg:px-8 md:px-7">
         <div className="mx-auto md:text-center">
           <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-gray-300 sm:text-6xl">
@@ -131,6 +131,7 @@ export function Testimonials() {
           ))}
         </ul>
       </div>
+    )
     </section>
   );
 }

@@ -7,11 +7,13 @@ import Header from "../components/Header";
 import SquigglyLines from "../components/SquigglyLines";
 import { Testimonials } from "../components/Testimonials";
 
+const testimonials = false;
+
 const Home: NextPage = () => {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>RoomGPT</title>
+        <title>Room Fix AI</title>
       </Head>
 
       <Header />
@@ -70,7 +72,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </main>
-      <Testimonials />
+      {testimonials ? (<Testimonials />) : ''}
       <Footer />
     </div>
   );

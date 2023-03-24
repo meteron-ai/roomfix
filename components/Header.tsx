@@ -13,7 +13,7 @@ export default function Header({ photo }: { photo?: string }) {
           height={24}
         />
         <h1 className="sm:text-3xl text-xl font-bold ml-2 tracking-tight">
-          roomGPT.io
+          roomfix.ai
         </h1>
       </Link>
       {photo ? (
@@ -24,7 +24,7 @@ export default function Header({ photo }: { photo?: string }) {
           >
             <div>Dashboard</div>
           </Link>
-          <Link
+          {/* <Link
             href="/buy-credits"
             className="border-r border-gray-300 pr-4 flex space-x-2 hover:text-blue-400 transition"
           >
@@ -32,7 +32,7 @@ export default function Header({ photo }: { photo?: string }) {
             <div className="text-blue-500 bg-blue-200 rounded-full px-2 text-xs flex justify-center items-center font-bold">
               New
             </div>
-          </Link>
+          </Link> */}
           <Image
             alt="Profile picture"
             src={photo}

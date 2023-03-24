@@ -15,7 +15,7 @@ export default function Dashboard({ rooms }: { rooms: Room[] }) {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>RoomGPT Dashboard</title>
+        <title>RoomFix Dashboard</title>
       </Head>
       <Header photo={session?.user?.image || undefined} />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-12 sm:mb-0 mb-8">
@@ -35,7 +35,7 @@ export default function Dashboard({ rooms }: { rooms: Room[] }) {
         ) : (
           <p className="text-gray-300">
             Browse through your previous room generations below. Any feedback?
-            Email hassan@roomgpt.io
+            Email hey@meteron.ai
           </p>
         )}
         {rooms.map((room) => (         
@@ -59,6 +59,7 @@ export async function getServerSideProps(ctx: any) {
   let roomsResponse = await fetch("https://app.meteron.ai/api/images/generations?" + new URLSearchParams({
         user: session.user.email,
         cluster: "replicate",
+        status: "completed",
     }), {
     method: "GET",   
     headers: {

@@ -44,6 +44,7 @@ const Home: NextPage = () => {
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
   const { data, mutate } = useSWR("/api/remaining", fetcher);
   const { data: session, status } = useSession();
+  const billingEnabled = false;
 
   const options = {
     maxFileCount: 1,
@@ -129,7 +130,7 @@ const Home: NextPage = () => {
       </Head>
       <Header photo={session?.user?.image || undefined} />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4 sm:mb-0 mb-8">
-        {status === "authenticated" ? (
+        {billingEnabled && status === "authenticated" ? (
           <Link
             href="/buy-credits"
             className="border border-gray-700 rounded-2xl py-2 px-4 text-gray-400 text-sm my-6 duration-300 ease-in-out hover:text-gray-300 transition"
@@ -157,10 +158,10 @@ const Home: NextPage = () => {
           <p className="text-gray-400">
             You have{" "}
             <span className="font-semibold text-gray-300">
-              {data.remainingGenerations} credits
+              {data.remainingGenerations} images to generate
             </span>{" "}
             left.{" "}
-            {data.remainingGenerations < 2 && (
+            {billingEnabled && data.remainingGenerations < 2 && (
               <span>
                 Buy more generations{" "}
                 <Link
@@ -273,7 +274,7 @@ const Home: NextPage = () => {
                   <div className="h-[250px] flex flex-col items-center space-y-6 max-w-[670px] -mt-8">
                     <div className="max-w-xl text-gray-300">
                       Sign in below with Google to create a free account and
-                      redesign your room today. You will get 5 generations for
+                      redesign your room today. You will get 10 generations per day for
                       free.
                     </div>
                     <button

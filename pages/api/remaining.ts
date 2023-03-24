@@ -14,15 +14,18 @@ export default async function handler(
     return res.status(401).json("Login to upload.");
   }
 
-  // Query the database by email to get the number of generations left
-  // const user = await prisma.user.findUnique({
-  //   where: {
-  //     email: session.user.email!,
-  //   },
-  //   select: {
-  //     credits: true,
-  //   },
-  // });
+  let remainingResp = await fetch("https://app.meteron.ai/api/remaining/generations?" + new URLSearchParams({
+        user: session.user.email,
+        cluster: "replicate",
+    }), {
+    method: "GET",   
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + process.env.METERON_API_KEY,
+    },
+  });
 
-  return res.status(200).json({ remainingGenerations: 50 });
+  let remaining = await remainingResp.json();
+
+  return res.status(200).json({ remainingGenerations: remaining.remaining });
 }
