@@ -1,26 +1,33 @@
-# [roomGPT.io](https://roomGPT.io)
+# [roomfix.ai](https://roomfix.ai)
 
 This project generates new designs of your room with AI
 
-[![Room GPT](./public/screenshot.png)](https://roomGPT.io)
+[![Room Fix AI](./public/screenshot.png)](https://roomfix.ai)
 
 ## How it works
 
-It uses an ML model called [ControlNet](https://github.com/lllyasviel/ControlNet) to generate variations of rooms. This application gives you the ability to upload a photo of any room, which will send it through this ML Model using a Next.js API route, and return your generated room. The ML Model is hosted on [Replicate](https://replicate.com) and [Upload](https://upload.io) is used for image storage. [Loops](https://loops.so/) is used for emails.
+It uses an ML model called [ControlNet](https://github.com/lllyasviel/ControlNet) to generate variations of rooms. This application gives you the ability to upload a photo of any room, which will send it through this ML Model using a Next.js API route, and return your generated room. The ML Model is hosted on [Replicate](https://replicate.com) and [Upload](https://upload.io) is used for image storage.
 
 ## Running Locally
 
 ### Cloning the repository the local machine.
 
 ```bash
-git clone https://github.com/Nutlope/roomGPT
+git clone https://github.com/meteron-ai/roomfix
 ```
 
-### Creating a account on Replicate to get an API key.
+### Creating an account on Replicate to get an API key.
 
-1. Go to [Replicate](https://replicate.com/) to make an account.
+1. Go to [Replicate](https://replicate.com/) to create an account.
 2. Click on your profile picture in the top right corner, and click on "Dashboard".
 3. Click on "Account" in the navbar. And, here you can find your API token, copy it.
+
+### Creating an account on Meteron which will provide queuing, storage and APIs to retrieve the images
+
+1. Go to [Meteron](https://app.meteron.ai/) to create an account.
+2. Click on "Add Cluster" button and select "Replicate", give it a name `replicate` then set the token from the previous section.
+3. Get your Meteron API key from [API keys](https://app.meteron.ai/?tab=API%20Keys) tab.
+4. Set this key as an environment variable.
 
 ### Storing the API keys in .env
 
