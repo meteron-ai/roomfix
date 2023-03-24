@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import prisma from "../../lib/prismadb";
 import Stripe from "stripe";
 import { buffer } from "micro";
 import Cors from "micro-cors";
@@ -72,27 +71,9 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
           creditAmount = 400;
           break;
       }
-      await prisma.user.update({
-        where: {
-          email: userEmail,
-        },
-        data: {
-          credits: {
-            increment: creditAmount,
-          },
-        },
-      });
 
-      await prisma.purchase.create({
-        data: {
-          creditAmount: creditAmount,
-          user: {
-            connect: {
-              email: userEmail,
-            },
-          },
-        },
-      });
+      console.log(`increment ${userEmail} by ${creditAmount} credits`)
+    
     } else if (event.type === "payment_intent.payment_failed") {
       const paymentIntent = event.data.object as Stripe.PaymentIntent;
       console.log(

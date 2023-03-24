@@ -3,13 +3,11 @@ import Header from "../components/Header";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Footer from "../components/Footer";
-// import prisma from "../lib/prismadb";
-import { Room } from "@prisma/client";
 import { RoomGeneration } from "../components/RoomGenerator";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
 
-export default function Dashboard({ rooms }: { rooms: Room[] }) {
+export default function Dashboard({ rooms }: { rooms: [] }) {
   const { data: session } = useSession();
 
   return (
