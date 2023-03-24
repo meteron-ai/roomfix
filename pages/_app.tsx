@@ -8,11 +8,11 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <SessionProvider session={session}>
       <Component {...pageProps} />
-      <Script src="https://scripts.simpleanalyticscdn.com/latest.js"  />
+      <Script src="https://sa.roomfix.ai/latest.js"  />
       <noscript>
         {/* eslint-disable @next/next/no-img-element */}
         <img
-          src="https://queue.simpleanalyticscdn.com/noscript.gif"
+          src="https://sa.roomfix.ai/noscript.gif"
           alt=""
           referrerPolicy="no-referrer-when-downgrade"
         />
