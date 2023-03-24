@@ -67,6 +67,5 @@ npm run dev
 
 Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nutlope/roomGPT&env=REPLICATE_API_KEY,NEXTAUTH_SECRET,GOOGLE_CLIENT_ID,GOOGLE_CLIENT_SECRET,DATABASE_URL,SHADOW_DATABASE_URL,NEXTAUTH_URL&project-name=room-GPT&repo-name=roomGPT)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmeteron-ai%2Froomfix&env=METERON_API_KEY,NEXTAUTH_SECRET,GOOGLE_CLIENT_ID,GOOGLE_CLIENT_SECRET&envDescription=You%20will%20need%20to%20get%20Meteron%20(https%3A%2F%2Fmeteron.ai%2F)%2C%20Replicate%20(https%3A%2F%2Freplicate.com%2F)%20and%20Google%20auth%20client%20keys&envLink=https%3A%2F%2Fmeteron.ai%2F&demo-title=RoomFix&demo-url=https%3A%2F%2Froomfix.ai)
 
-> Note: You will need to configure auth by following the setup above by using Neon and next-auth and payments
