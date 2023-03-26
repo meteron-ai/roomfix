@@ -26,37 +26,6 @@ export default async function handler(
     return res.status(500).json("Login to upload.");
   }
 
-  const ratelimit = false
-
-  // TODO: ability from meteron to get the rate
-  // limit for a user
-  if (ratelimit) {
-    // const identifier = session.user.email;
-    const result = {
-      limit: 100,
-      remaining: 50,
-      reset: new Date(),
-      success: true 
-    }
-    res.setHeader("X-RateLimit-Limit", result.limit);
-    res.setHeader("X-RateLimit-Remaining", result.remaining);
-
-    // Calcualte the remaining time until generations are reset
-    const diff = Math.abs(
-      new Date(result.reset).getTime() - new Date().getTime()
-    );
-    const hours = Math.floor(diff / 1000 / 60 / 60);
-    const minutes = Math.floor(diff / 1000 / 60) - hours * 60;
-
-    if (!result.success) {
-      return res
-        .status(429)
-        .json(
-          `Your generations will renew in ${hours} hours and ${minutes} minutes. Email hassan@hey.com if you have any questions.`
-        );
-    }
-  }
-
   const { imageUrl, theme, room } = req.body;
   const prompt =
     room === "Gaming Room"
