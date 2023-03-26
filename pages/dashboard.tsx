@@ -61,8 +61,7 @@ export async function getServerSideProps(ctx: any) {
     }), {
     method: "GET",   
     headers: {
-      "Content-Type": "application/json",
-      // "X-Cluster": "replicate",
+      "Content-Type": "application/json",     
       Authorization: "Bearer " + process.env.METERON_API_KEY,
     },
   });
