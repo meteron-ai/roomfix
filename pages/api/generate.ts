@@ -37,7 +37,7 @@ export default async function handler(
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-Cluster": "replicate",
+      "X-Model": "replicate",
       "X-Async": "false",
       "X-Tier": "3", // Gets slower with more generations
       "X-User": session.user.email,
