@@ -70,7 +70,6 @@ export default async function handler(
       "Content-Type": "application/json",
       "X-Cluster": "replicate",
       "X-Async": "false",
-      "X-Tier": "3", // Gets slower with more generations
       "X-User": session.user.email,
       Authorization: "Bearer " + process.env.METERON_API_KEY,
     },
