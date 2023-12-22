@@ -37,7 +37,7 @@ export default async function handler(
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-Model": "replicate",
+      "X-Model": process.env.METERON_MODEL_ID,
       "X-Async": "false",
       "X-User": session.user.email,
       Authorization: "Bearer " + process.env.METERON_API_KEY,

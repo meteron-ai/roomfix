@@ -15,7 +15,7 @@ export default async function handler(
 
   let remainingResp = await fetch("https://app.meteron.ai/api/remaining/generations?" + new URLSearchParams({
         user: session.user.email,
-        model: "replicate",
+        model: process.env.METERON_MODEL_ID,
     }), {
     method: "GET",   
     headers: {

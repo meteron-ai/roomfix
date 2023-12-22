@@ -56,7 +56,7 @@ export async function getServerSideProps(ctx: any) {
 
   let roomsResponse = await fetch("https://app.meteron.ai/api/images/generations?" + new URLSearchParams({
         user: session.user.email,
-        model: "replicate",
+        model: process.env.METERON_MODEL_ID,
         status: "completed",
     }), {
     method: "GET",   
