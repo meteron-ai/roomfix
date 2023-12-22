@@ -1,15 +1,10 @@
 import Image from "next/image";
 
 export function RoomGeneration({
-  originalBase64,
-  generated,
+  room,
 }: {
-  originalBase64: string;
-  generated: string;
+  room: string;
 }) {
-  // Decode base64 encoded 'original' JSON
-  const original = JSON.parse(Buffer.from(originalBase64, "base64").toString("ascii"));
-
   return (
     <div className="flex flex-col space-y-10 mt-4 mb-4 border px-8 pb-8 pt-2 border-gray-600 rounded-xl">
       <div className="flex sm:space-x-8 sm:flex-row flex-col pb-5">
@@ -17,7 +12,7 @@ export function RoomGeneration({
           <h3 className="mb-1 font-medium text-lg">Original</h3>
           <Image
             alt="Original room"
-            src={original.input.image}
+            src={room.original.input.image}
             className="rounded-2xl h-full"
             width={400}
             height={400}
@@ -29,7 +24,7 @@ export function RoomGeneration({
             alt="Generated room"
             width={400}
             height={400}
-            src={generated}
+            src={room.generated.output[1]}
             className="rounded-2xl h-full sm:mt-0 mt-2"
           />
         </div>

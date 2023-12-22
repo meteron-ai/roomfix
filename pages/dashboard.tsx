@@ -36,10 +36,9 @@ export default function Dashboard({ rooms }: { rooms: [] }) {
             Email hey@meteron.ai
           </p>
         )}
-        {rooms.map((room) => (         
+        {rooms.map((room) => (
           <RoomGeneration
-            originalBase64={room.requestBody}
-            generated={room.outputImages[1].url}
+            room={room}
           />
         ))}
       </main>
@@ -69,6 +68,54 @@ export async function getServerSideProps(ctx: any) {
   let jsonRoomsResponse = await roomsResponse.json();
 
   let rooms = jsonRoomsResponse.results;
+
+  // Concurrently fetch the rooms[n].outputs[1].url. This is the output of the model. Response
+  // contains JSON with "output" key that contains base64 encoded image (data:image/png;base64...).
+  // We will decode this in the RoomGeneration component.
+
+  let roomImages = await Promise.all(
+    rooms.map((room: any) => {
+      return fetch(room.outputs[0].url, {
+        method: "GET",        
+      });
+    })
+  );
+
+  // Fetch initial prompts, they contain the input image
+  let prompts = await Promise.all(
+    rooms.map((room: any) => {
+      return fetch(room.requestBodyPath, {
+        method: "GET",        
+      });
+    })
+  );
+
+  // Add the base64 encoded image to the room object under the "generated"
+  rooms = await Promise.all(
+    roomImages.map(async (roomImage) => {
+      
+      let genResponse = await roomImage.json();
+      
+      return {
+        ...rooms[roomImages.indexOf(roomImage)],
+        generated: {
+          ...genResponse,
+        }
+      };
+    })
+  );
+
+  rooms = await Promise.all(
+    prompts.map(async (prompt) => {    
+      let req = await prompt.json();
+      return {
+        ...rooms[prompts.indexOf(prompt)],
+        original: {
+          ...req,
+        }
+      };
+    })
+  );
 
   return {
     props: {

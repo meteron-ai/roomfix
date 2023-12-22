@@ -14,12 +14,12 @@ export default function Footer() {
           Meteron,{" "}
         </a>
         <a
-          href="https://replicate.com/"
+          href="https://lightning.ai/"
           target="_blank"
           rel="noreferrer"
           className="font-bold hover:underline transition hover:text-gray-300 underline-offset-2"
         >
-          Replicate{" "}
+          Lightning AI{" "}
         </a>        
         and{" "}
         <a

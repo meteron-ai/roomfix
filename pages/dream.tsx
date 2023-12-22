@@ -141,9 +141,8 @@ const Home: NextPage = () => {
           </Link>
         ) : (
           <a
-            href="https://twitter.com/nutlope/status/1635674124738523139?cxt=HHwWhsCz1ei8irMtAAAA"
+            href="https://meteron.ai/guides/fullstack-app"
             target="_blank"
-            rel="noopener noreferrer"
             className="border border-gray-700 rounded-2xl py-2 px-4 text-gray-400 text-sm my-6 duration-300 ease-in-out hover:text-gray-300 transition"
           >
             Learn how to{" "}
@@ -151,7 +150,7 @@ const Home: NextPage = () => {
             !
           </a>
         )}
-        <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
+        <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-4xl mb-5">
           Generate your <span className="text-blue-600">dream</span> room
         </h1>
         {status === "authenticated" && data && !restoredImage && (
